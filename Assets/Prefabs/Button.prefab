@@ -150,5 +150,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outline: {fileID: 5740295935505615134}
-  animationSpeed: 1
+  animationSpeed: 5
   maxDistance: 5
