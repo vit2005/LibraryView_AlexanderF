@@ -25,3 +25,15 @@ MonoBehaviour:
       size: {x: 269.1128, y: 302.3452}
       isScalable: 0
       SomeUsefulData: Kid
+  - main: {fileID: 6326231466481203021, guid: 32caf630bc0b9624292ab1450280fe77, type: 3}
+    buttons:
+    - image: {fileID: -3414963050774899787, guid: 8b674f401d92e754a8716a65c383fd90, type: 3}
+      position: {x: 59.43363, y: 384.68427}
+      size: {x: 748.1523, y: 555.957}
+      isScalable: 1
+      SomeUsefulData: Stars
+    - image: {fileID: 3512312157413079404, guid: 2e0745f9981d59a4c8c825811207448b, type: 3}
+      position: {x: 23.9352, y: -40.277767}
+      size: {x: 720.2231, y: 253.0738}
+      isScalable: 1
+      SomeUsefulData: Computer
