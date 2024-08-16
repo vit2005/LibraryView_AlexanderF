@@ -6,7 +6,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Outline))]
 public class OutlineAnimation : MonoBehaviour
 {
-
     [SerializeField] private Outline outline;
     public float animationSpeed = 1f;
     public float maxDistance = 5f;

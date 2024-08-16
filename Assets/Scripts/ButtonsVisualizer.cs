@@ -60,7 +60,13 @@ public class ButtonsVisualizer : MonoBehaviour
 
             // Set button
             var button = instance.GetComponent<Button>();
-            button.onClick.AddListener(() => { SomeDataClick?.Invoke(item.SomeUsefulData); });
+            button.onClick.AddListener(() => { SomeDataClick?.Invoke(item.title); });
+
+            // Set effects
+            var effectsController = instance.GetComponent<ButtonEffectsController>();
+            effectsController.SetImage(item.image);
+            effectsController.SetText(item.title);
+            effectsController.SetEffects(item.effects);
         }
     }
 

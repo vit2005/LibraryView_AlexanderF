@@ -82,7 +82,8 @@ public class ImagesConfigEditor : Editor
             EditorGUILayout.PropertyField(buttonDataProperty.FindPropertyRelative("position"));
             EditorGUILayout.PropertyField(buttonDataProperty.FindPropertyRelative("size"));
             EditorGUILayout.PropertyField(buttonDataProperty.FindPropertyRelative("isScalable"));
-            EditorGUILayout.PropertyField(buttonDataProperty.FindPropertyRelative("SomeUsefulData"));
+            EditorGUILayout.PropertyField(buttonDataProperty.FindPropertyRelative("title"));
+            EditorGUILayout.PropertyField(buttonDataProperty.FindPropertyRelative("effects"));
 
             // Начинаем горизонтальную группу для размещения кнопок на одной линии
             EditorGUILayout.BeginHorizontal();
