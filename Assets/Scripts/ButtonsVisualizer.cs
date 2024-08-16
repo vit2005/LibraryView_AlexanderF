@@ -17,6 +17,8 @@ public class ButtonsVisualizer : MonoBehaviour
     void Start()
     {
         SomeDataClick += OnSomeDataClick;
+        int randomImageIndex = UnityEngine.Random.Range(0, config.allImages.Count);
+        choosenImageData = config.allImages[randomImageIndex];
 
         SetMainImage();
 
@@ -28,9 +30,6 @@ public class ButtonsVisualizer : MonoBehaviour
 
     private void SetMainImage()
     {
-        int randomImageIndex = UnityEngine.Random.Range(0, config.allImages.Count);
-        choosenImageData = config.allImages[randomImageIndex];
-
         background.sprite = choosenImageData.main;
     }
 
@@ -68,5 +67,38 @@ public class ButtonsVisualizer : MonoBehaviour
     private void OnSomeDataClick(string data)
     {
         Debug.Log(data);
+    }
+
+    public void SetNextImage()
+    {
+        int currentIndex = config.allImages.IndexOf(choosenImageData);
+        int nextIndex = (currentIndex + 1) % config.allImages.Count;
+        choosenImageData = config.allImages[nextIndex];
+
+        DestroyOldButtons();
+        SetMainImage();
+        SetScaleCoefitients();
+        InstantiateButtons();
+    }
+
+    public void SetPreviousImage()
+    {
+        int currentIndex = config.allImages.IndexOf(choosenImageData);
+        int previousIndex = (currentIndex - 1 + config.allImages.Count) % config.allImages.Count;
+        choosenImageData = config.allImages[previousIndex];
+
+        DestroyOldButtons();
+        SetMainImage();
+        SetScaleCoefitients();
+        InstantiateButtons();
+    }
+
+    private void DestroyOldButtons()
+    {
+        for (int i = background.transform.childCount - 1; i >= 0; i--)
+        {
+            Transform child = background.transform.GetChild(i);
+            GameObject.Destroy(child.gameObject);
+        }
     }
 }
