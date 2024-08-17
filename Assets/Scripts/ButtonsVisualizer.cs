@@ -2,25 +2,26 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ButtonsVisualizer : MonoBehaviour
 {
-    [SerializeField] private ImagesConfig config;
+    [SerializeField] private StagesConfig config;
     [SerializeField] private Image background;
     [SerializeField] private GameObject buttonPrefab;
+    [SerializeField] private AudioSource backgroundAudio;
 
-    public Action<string> SomeDataClick;
     private float w, h;
-    private ImageConfig choosenImageData;
+    private StageConfig choosenImageData;
 
     void Start()
     {
-        SomeDataClick += OnSomeDataClick;
-        int randomImageIndex = UnityEngine.Random.Range(0, config.allImages.Count);
-        choosenImageData = config.allImages[randomImageIndex];
+        //OnClick += LogClick;
+        int randomImageIndex = UnityEngine.Random.Range(0, config.allStages.Count);
+        choosenImageData = config.allStages[randomImageIndex];
 
-        SetMainImage();
+        SetMainImageAndSound();
 
         SetScaleCoefitients();
 
@@ -28,9 +29,11 @@ public class ButtonsVisualizer : MonoBehaviour
 
     }
 
-    private void SetMainImage()
+    private void SetMainImageAndSound()
     {
         background.sprite = choosenImageData.main;
+        backgroundAudio.clip = choosenImageData.stageSound;
+        backgroundAudio.Play();
     }
 
     private void SetScaleCoefitients()
@@ -58,9 +61,13 @@ public class ButtonsVisualizer : MonoBehaviour
             rectTransform.sizeDelta = item.isScalable ? new Vector2(item.size.x / w, item.size.y / h) :
                 new Vector2(item.size.x / h, item.size.y / h);
 
-            // Set button
-            var button = instance.GetComponent<Button>();
-            button.onClick.AddListener(() => { SomeDataClick?.Invoke(item.title); });
+            // Set button interactables
+            var button = instance.GetComponent<ButtonInteractionsHandler>();
+            button.Init(item.title, item.clickSound != null, item.longPressSound != null, item.isDragable);
+
+            // Set button sounds
+            var sounds = instance.GetComponent<ButtonSoundsHandler>();
+            sounds.Init(item.clickSound, item.longPressSound);
 
             // Set effects
             var effectsController = instance.GetComponent<ButtonEffectsController>();
@@ -70,31 +77,31 @@ public class ButtonsVisualizer : MonoBehaviour
         }
     }
 
-    private void OnSomeDataClick(string data)
+    private void LogClick(string data)
     {
         Debug.Log(data);
     }
 
     public void SetNextImage()
     {
-        int currentIndex = config.allImages.IndexOf(choosenImageData);
-        int nextIndex = (currentIndex + 1) % config.allImages.Count;
-        choosenImageData = config.allImages[nextIndex];
+        int currentIndex = config.allStages.IndexOf(choosenImageData);
+        int nextIndex = (currentIndex + 1) % config.allStages.Count;
+        choosenImageData = config.allStages[nextIndex];
 
         DestroyOldButtons();
-        SetMainImage();
+        SetMainImageAndSound();
         SetScaleCoefitients();
         InstantiateButtons();
     }
 
     public void SetPreviousImage()
     {
-        int currentIndex = config.allImages.IndexOf(choosenImageData);
-        int previousIndex = (currentIndex - 1 + config.allImages.Count) % config.allImages.Count;
-        choosenImageData = config.allImages[previousIndex];
+        int currentIndex = config.allStages.IndexOf(choosenImageData);
+        int previousIndex = (currentIndex - 1 + config.allStages.Count) % config.allStages.Count;
+        choosenImageData = config.allStages[previousIndex];
 
         DestroyOldButtons();
-        SetMainImage();
+        SetMainImageAndSound();
         SetScaleCoefitients();
         InstantiateButtons();
     }
