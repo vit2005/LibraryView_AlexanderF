@@ -33,10 +33,10 @@ public class StagesConfigEditor : Editor
 
             // Отображаем поле для свойства "main" (основное изображение)
             EditorGUILayout.PropertyField(StageConfigProperty.FindPropertyRelative("main"));
-            EditorGUILayout.PropertyField(StageConfigProperty.FindPropertyRelative("stageSound"));
+            EditorGUILayout.PropertyField(StageConfigProperty.FindPropertyRelative("music"));
 
-            // Вызываем метод для отображения списка ButtonData
-            DrawButtonDataList(StageConfigProperty.FindPropertyRelative("buttons"));
+            // Вызываем метод для отображения списка ActorData
+            DrawActorDataList(StageConfigProperty.FindPropertyRelative("actors"));
 
             // Добавляем кнопку для удаления текущего StageConfig из списка
             if (GUILayout.Button("Remove this StageConfig"))
@@ -53,7 +53,7 @@ public class StagesConfigEditor : Editor
         }
 
         // Добавляем кнопку для создания нового StageConfig
-        if (GUILayout.Button("Add new StageConfig"))
+        if (GUILayout.Button("Add new Stage"))
         {
             // Вызываем метод для добавления нового элемента в список allStages
             AddNewStageConfig();
@@ -63,43 +63,43 @@ public class StagesConfigEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 
-    // Метод для отображения списка ButtonData (например, scalable или unscalable)
-    private void DrawButtonDataList(SerializedProperty listProperty)
+    // Метод для отображения списка ActorData (например, scalable или unscalable)
+    private void DrawActorDataList(SerializedProperty listProperty)
     {
         // Отображаем заголовок списка с жирным шрифтом
-        EditorGUILayout.LabelField("Buttons", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("Actors", EditorStyles.boldLabel);
 
-        // Проходимся по каждому элементу списка ButtonData
+        // Проходимся по каждому элементу списка ActorData
         for (int i = 0; i < listProperty.arraySize; i++)
         {
-            // Получаем текущий элемент списка ButtonData
-            SerializedProperty buttonDataProperty = listProperty.GetArrayElementAtIndex(i);
+            // Получаем текущий элемент списка ActorData
+            SerializedProperty ActorDataProperty = listProperty.GetArrayElementAtIndex(i);
 
             // Начинаем обработку свойства для возможности отката изменений
-            EditorGUI.BeginProperty(EditorGUILayout.GetControlRect(true), GUIContent.none, buttonDataProperty);
+            EditorGUI.BeginProperty(EditorGUILayout.GetControlRect(true), GUIContent.none, ActorDataProperty);
 
-            // Отображаем поля для свойств ButtonData
-            EditorGUILayout.PropertyField(buttonDataProperty.FindPropertyRelative("image"));
-            EditorGUILayout.PropertyField(buttonDataProperty.FindPropertyRelative("position"));
-            EditorGUILayout.PropertyField(buttonDataProperty.FindPropertyRelative("size"));
-            EditorGUILayout.PropertyField(buttonDataProperty.FindPropertyRelative("isScalable"));
-            EditorGUILayout.PropertyField(buttonDataProperty.FindPropertyRelative("title"));
-            EditorGUILayout.PropertyField(buttonDataProperty.FindPropertyRelative("effects"));
-            EditorGUILayout.PropertyField(buttonDataProperty.FindPropertyRelative("isDragable"));
-            EditorGUILayout.PropertyField(buttonDataProperty.FindPropertyRelative("clickSound"));
-            EditorGUILayout.PropertyField(buttonDataProperty.FindPropertyRelative("longPressSound"));
+            // Отображаем поля для свойств ActorData
+            EditorGUILayout.PropertyField(ActorDataProperty.FindPropertyRelative("image"));
+            EditorGUILayout.PropertyField(ActorDataProperty.FindPropertyRelative("position"));
+            EditorGUILayout.PropertyField(ActorDataProperty.FindPropertyRelative("size"));
+            EditorGUILayout.PropertyField(ActorDataProperty.FindPropertyRelative("isScalable"));
+            EditorGUILayout.PropertyField(ActorDataProperty.FindPropertyRelative("title"));
+            EditorGUILayout.PropertyField(ActorDataProperty.FindPropertyRelative("effects"));
+            EditorGUILayout.PropertyField(ActorDataProperty.FindPropertyRelative("isDragable"));
+            EditorGUILayout.PropertyField(ActorDataProperty.FindPropertyRelative("clickSound"));
+            EditorGUILayout.PropertyField(ActorDataProperty.FindPropertyRelative("longPressSound"));
 
             // Начинаем горизонтальную группу для размещения кнопок на одной линии
             EditorGUILayout.BeginHorizontal();
 
             // Кнопка для копирования позиции и размера из выделенного объекта
-            if (GUILayout.Button("Copy from selected Stage"))
+            if (GUILayout.Button("Copy from selected"))
             {
                 // Вызываем метод для копирования данных из выделенного объекта
-                CopyFromSelectedStage(buttonDataProperty);
+                CopyFromSelectedStage(ActorDataProperty);
             }
 
-            // Кнопка для удаления текущего ButtonData из списка
+            // Кнопка для удаления текущего ActorData из списка
             if (GUILayout.Button("Remove"))
             {
                 // Удаляем элемент списка по индексу
@@ -116,8 +116,8 @@ public class StagesConfigEditor : Editor
             EditorGUI.EndProperty();
         }
 
-        // Добавляем кнопку для добавления нового элемента ButtonData в список
-        if (GUILayout.Button("Add new ButtonData"))
+        // Добавляем кнопку для добавления нового элемента ActorData в список
+        if (GUILayout.Button("Add new Actor"))
         {
             // Увеличиваем размер массива, добавляя новый элемент
             listProperty.arraySize++;
@@ -134,12 +134,12 @@ public class StagesConfigEditor : Editor
 
         // Очищаем поля нового StageConfig
         newStageConfig.FindPropertyRelative("main").objectReferenceValue = null;
-        newStageConfig.FindPropertyRelative("stageSound").objectReferenceValue = null;
-        newStageConfig.FindPropertyRelative("buttons").ClearArray();
+        newStageConfig.FindPropertyRelative("music").objectReferenceValue = null;
+        newStageConfig.FindPropertyRelative("actors").ClearArray();
     }
 
     // Метод для копирования позиции и размера из выделенного Stage
-    private void CopyFromSelectedStage(SerializedProperty buttonDataProperty)
+    private void CopyFromSelectedStage(SerializedProperty ActorDataProperty)
     {
         // Получаем выделенный объект
         GameObject selectedObject = Selection.activeGameObject;
@@ -151,9 +151,9 @@ public class StagesConfigEditor : Editor
             RectTransform rectTransform = selectedObject.GetComponent<RectTransform>();
             if (rectTransform != null)
             {
-                // Копируем позицию и размер в соответствующие свойства ButtonData
-                buttonDataProperty.FindPropertyRelative("position").vector2Value = rectTransform.anchoredPosition;
-                buttonDataProperty.FindPropertyRelative("size").vector2Value = rectTransform.sizeDelta;
+                // Копируем позицию и размер в соответствующие свойства ActorData
+                ActorDataProperty.FindPropertyRelative("position").vector2Value = rectTransform.anchoredPosition;
+                ActorDataProperty.FindPropertyRelative("size").vector2Value = rectTransform.sizeDelta;
 
                 // Применяем изменения
                 serializedObject.ApplyModifiedProperties();

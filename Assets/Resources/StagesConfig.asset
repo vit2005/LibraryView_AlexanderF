@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allStages:
   - main: {fileID: 1208040086343421634, guid: 108600d2a73cb9843b5258a294b244e5, type: 3}
-    stageSound: {fileID: 8300000, guid: bd46098083c5fe944b273e8ea7df11aa, type: 3}
-    buttons:
+    music: {fileID: 8300000, guid: bd46098083c5fe944b273e8ea7df11aa, type: 3}
+    actors:
     - image: {fileID: 3310002292416464744, guid: 05270e3c40ecd7c4c8bd687508c8b685, type: 3}
       position: {x: -124.05994, y: -445.4834}
       size: {x: 269.1128, y: 302.3452}
@@ -35,8 +35,8 @@ MonoBehaviour:
       clickSound: {fileID: 0}
       longPressSound: {fileID: 0}
   - main: {fileID: 6326231466481203021, guid: 32caf630bc0b9624292ab1450280fe77, type: 3}
-    stageSound: {fileID: 8300000, guid: a47efd939bf6ad343b4fe803ff5cc5de, type: 3}
-    buttons:
+    music: {fileID: 8300000, guid: a47efd939bf6ad343b4fe803ff5cc5de, type: 3}
+    actors:
     - image: {fileID: -3414963050774899787, guid: 8b674f401d92e754a8716a65c383fd90, type: 3}
       position: {x: 59.43363, y: 384.68427}
       size: {x: 748.1523, y: 555.957}

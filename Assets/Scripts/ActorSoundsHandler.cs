@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(ButtonInteractionsHandler))]
-public class ButtonSoundsHandler : MonoBehaviour
+[RequireComponent(typeof(ActorInteractionsHandler))]
+public class ActorSoundsHandler : MonoBehaviour
 {
-    [SerializeField] private ButtonInteractionsHandler interactionsHandler;
+    [SerializeField] private ActorInteractionsHandler interactionsHandler;
     [SerializeField] private AudioSource audioSource;
 
     public void Init(AudioClip click, AudioClip longPress)

@@ -5,14 +5,14 @@ using static UnityEditor.PlayerSettings;
 
 public class StageEffectsController : MonoBehaviour
 {
-    [SerializeField] private Transform light;
+    [SerializeField] private new Transform light;
 
     public void Clear()
     {
         light.gameObject.SetActive(false);
     }
 
-    public void CheckOnStageEffects(List<(ButtonData, ButtonInteractionsHandler)> buttonsInstances)
+    public void CheckOnStageEffects(List<(ActorData, ActorInteractionsHandler)> buttonsInstances)
     {
         foreach (var buttonData in buttonsInstances)
         {

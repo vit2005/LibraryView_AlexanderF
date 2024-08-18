@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ButtonsVisualizer : MonoBehaviour
+public class StagesManager : MonoBehaviour
 {
     [SerializeField] private StagesConfig config;
     [SerializeField] private Image background;
@@ -15,7 +15,7 @@ public class ButtonsVisualizer : MonoBehaviour
 
     private float w, h;
     private StageConfig choosenImageData;
-    private List<(ButtonData, ButtonInteractionsHandler)> buttonInstances = new List<(ButtonData, ButtonInteractionsHandler)> ();
+    private List<(ActorData, ActorInteractionsHandler)> buttonInstances = new List<(ActorData, ActorInteractionsHandler)> ();
 
     void Start()
     {
@@ -34,7 +34,7 @@ public class ButtonsVisualizer : MonoBehaviour
     private void SetMainImageAndSound()
     {
         background.sprite = choosenImageData.main;
-        backgroundAudio.clip = choosenImageData.stageSound;
+        backgroundAudio.clip = choosenImageData.music;
         backgroundAudio.Play();
     }
 
@@ -53,7 +53,7 @@ public class ButtonsVisualizer : MonoBehaviour
         buttonInstances.Clear();
         stageEffectsController.Clear();
 
-        foreach (var item in choosenImageData.buttons)
+        foreach (var item in choosenImageData.actors)
         {
             var instance = Instantiate(this.buttonPrefab, background.transform);
 
@@ -67,16 +67,16 @@ public class ButtonsVisualizer : MonoBehaviour
                 new Vector2(item.size.x / h, item.size.y / h);
 
             // Set button interactables
-            var button = instance.GetComponent<ButtonInteractionsHandler>();
+            var button = instance.GetComponent<ActorInteractionsHandler>();
             button.Init(item.title, item.clickSound != null, item.longPressSound != null, item.isDragable);
             buttonInstances.Add((item, button));
 
             // Set button sounds
-            var sounds = instance.GetComponent<ButtonSoundsHandler>();
+            var sounds = instance.GetComponent<ActorSoundsHandler>();
             sounds.Init(item.clickSound, item.longPressSound);
 
             // Set effects
-            var effectsController = instance.GetComponent<ButtonEffectsController>();
+            var effectsController = instance.GetComponent<ActorEffectsController>();
             effectsController.SetImage(item.image);
             effectsController.SetText(item.title);
             effectsController.SetEffects(item.effects);

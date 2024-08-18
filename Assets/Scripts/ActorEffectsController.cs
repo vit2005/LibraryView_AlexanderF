@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonEffectsController : MonoBehaviour
+public class ActorEffectsController : MonoBehaviour
 {
     [SerializeField] Image targetImage;
     [SerializeField] TextMeshProUGUI text;

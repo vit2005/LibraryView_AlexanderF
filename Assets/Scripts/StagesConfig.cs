@@ -16,7 +16,7 @@ public enum ButtonEffects
 }
 
 [Serializable]
-public class ButtonData 
+public class ActorData 
 {
     public Sprite image;
     public Vector2 position;
@@ -33,8 +33,8 @@ public class ButtonData
 public class StageConfig
 {
     public Sprite main;
-    public AudioClip stageSound;
-    public List<ButtonData> buttons;
+    public AudioClip music;
+    public List<ActorData> actors;
 }
 
 [CreateAssetMenu(fileName = "StagesConfig", menuName = "ScriptableObjects/StagesConfig")]
