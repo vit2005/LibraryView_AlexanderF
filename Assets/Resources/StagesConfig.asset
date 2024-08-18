@@ -21,7 +21,7 @@ MonoBehaviour:
       size: {x: 269.1128, y: 302.3452}
       isScalable: 0
       title: Kid
-      effects: 9
+      effects: 25
       isDragable: 1
       clickSound: {fileID: 8300000, guid: eb01a997eddc9a44b92d145232f8b175, type: 3}
       longPressSound: {fileID: 0}

@@ -11,7 +11,8 @@ public enum ButtonEffects
     Outline = 1 << 0,  // 1
     Blink = 1 << 1,  // 2
     Opacity = 1 << 2,    // 4
-    Pump = 1 << 3 // 8
+    Pump = 1 << 3, // 8
+    Light = 1 << 4 // 8
 }
 
 [Serializable]

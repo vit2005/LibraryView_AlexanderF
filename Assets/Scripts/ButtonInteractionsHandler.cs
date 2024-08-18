@@ -15,6 +15,7 @@ public class ButtonInteractionsHandler : MonoBehaviour, IBeginDragHandler, IDrag
     public Action<string> OnLongPressBeginAction;
     public Action<string> OnLongPressEndAction;
     public Action<string> OnBeginDragAction;
+    public Action<Vector2> OnDragAction;
     public Action<string> OnEndDragAction;
 
     public float holdTime = 0.5f; // Time in seconds to recognize as a long press
@@ -90,6 +91,7 @@ public class ButtonInteractionsHandler : MonoBehaviour, IBeginDragHandler, IDrag
     {
         if (!_isDraggable) return;
         transform.position = eventData.position;
+        OnDragAction?.Invoke(eventData.position);
     }
 
     public void OnBeginDrag(PointerEventData eventData)

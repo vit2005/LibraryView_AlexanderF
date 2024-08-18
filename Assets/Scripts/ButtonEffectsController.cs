@@ -39,7 +39,7 @@ public class ButtonEffectsController : MonoBehaviour
     {
         foreach (var effect in Enum.GetValues(typeof(ButtonEffects))) 
         { 
-            if ((effects & (ButtonEffects)effect) != 0)
+            if ((effects & (ButtonEffects)effect) != 0 && effectsDictionary.ContainsKey((ButtonEffects)effect))
                 effectsDictionary[(ButtonEffects)effect].enabled = true;
         }
     }

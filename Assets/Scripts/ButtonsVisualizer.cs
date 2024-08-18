@@ -11,9 +11,11 @@ public class ButtonsVisualizer : MonoBehaviour
     [SerializeField] private Image background;
     [SerializeField] private GameObject buttonPrefab;
     [SerializeField] private AudioSource backgroundAudio;
+    [SerializeField] private StageEffectsController stageEffectsController;
 
     private float w, h;
     private StageConfig choosenImageData;
+    private List<(ButtonData, ButtonInteractionsHandler)> buttonInstances = new List<(ButtonData, ButtonInteractionsHandler)> ();
 
     void Start()
     {
@@ -48,6 +50,9 @@ public class ButtonsVisualizer : MonoBehaviour
 
     private void InstantiateButtons()
     {
+        buttonInstances.Clear();
+        stageEffectsController.Clear();
+
         foreach (var item in choosenImageData.buttons)
         {
             var instance = Instantiate(this.buttonPrefab, background.transform);
@@ -64,6 +69,7 @@ public class ButtonsVisualizer : MonoBehaviour
             // Set button interactables
             var button = instance.GetComponent<ButtonInteractionsHandler>();
             button.Init(item.title, item.clickSound != null, item.longPressSound != null, item.isDragable);
+            buttonInstances.Add((item, button));
 
             // Set button sounds
             var sounds = instance.GetComponent<ButtonSoundsHandler>();
@@ -75,6 +81,8 @@ public class ButtonsVisualizer : MonoBehaviour
             effectsController.SetText(item.title);
             effectsController.SetEffects(item.effects);
         }
+
+        stageEffectsController.CheckOnStageEffects(buttonInstances);
     }
 
     private void LogClick(string data)
