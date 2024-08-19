@@ -8,7 +8,7 @@ public class TestDownloadAsset : MonoBehaviour
 {
     [SerializeField] private StagesManager manager;
 
-    private string url = "https://www.dropbox.com/scl/fi/3kaxml7sswgjryibfglcv/stagesconfigassetbundle?rlkey=ep4pgpxl2t3scb4gva8a25fqj&st=q1pm1lzy&dl=1"; // URL до твого ассет-файлу
+    private string url = "https://www.dropbox.com/scl/fi/3kaxml7sswgjryibfglcv/stagesconfigassetbundle?rlkey=ep4pgpxl2t3scb4gva8a25fqj&st=e7azypg8&dl=1";
 
     void Start()
     {
