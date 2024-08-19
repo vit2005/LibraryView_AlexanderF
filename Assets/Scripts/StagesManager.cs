@@ -17,8 +17,9 @@ public class StagesManager : MonoBehaviour
     private StageConfig choosenImageData;
     private List<(ActorData, ActorInteractionsHandler)> buttonInstances = new List<(ActorData, ActorInteractionsHandler)> ();
 
-    void Start()
+    public void Init(StagesConfig config)
     {
+        this.config = config;
         //OnClick += LogClick;
         int randomImageIndex = UnityEngine.Random.Range(0, config.allStages.Count);
         choosenImageData = config.allStages[randomImageIndex];

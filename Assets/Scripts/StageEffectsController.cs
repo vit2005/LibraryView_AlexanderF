@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class StageEffectsController : MonoBehaviour
 {
-    [SerializeField] private new Transform light;
+    [SerializeField] private Transform lightImage;
 
     public void Clear()
     {
-        light.gameObject.SetActive(false);
+        lightImage.gameObject.SetActive(false);
     }
 
     public void CheckOnStageEffects(List<(ActorData, ActorInteractionsHandler)> buttonsInstances)
@@ -18,9 +17,9 @@ public class StageEffectsController : MonoBehaviour
         {
             if ((buttonData.Item1.effects & ButtonEffects.Light) != 0)
             {
-                light.position = buttonData.Item2.transform.position;
-                light.gameObject.SetActive(true);
-                buttonData.Item2.OnDragAction += (Vector2 pos) => { light.position = pos; };
+                lightImage.position = buttonData.Item2.transform.position;
+                lightImage.gameObject.SetActive(true);
+                buttonData.Item2.OnDragAction += (Vector2 pos) => { lightImage.position = pos; };
             }
         }
     }

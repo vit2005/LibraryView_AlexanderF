@@ -1,0 +1,57 @@
+ManifestFileVersion: 0
+UnityVersion: 2023.2.20f1
+CRC: 3153198391
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: fb496a91431bb8c45dbfd823608b0ee9
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 32f4941b80e5e1fdbd92a21ed1ae8e94
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 60e8f7183e2e717f61a266b0f31113cd
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: c205f8b6e78261f42b744e296f23658f, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: .ActorData
+- AssemblyName: Assembly-CSharp
+  ClassName: .StageConfig
+Assets:
+- Assets/Resources/StagesData/Space/main.png
+- Assets/Resources/StagesData/Sea/main.png
+- Assets/Resources/StagesData/Library/main.png
+- Assets/Audio/Sound/628638__el_boss__menu-select-tick.wav
+- Assets/Resources/StagesData/KidWithBook/scalable/sky.png
+- Assets/Resources/StagesConfig.asset
+- Assets/Audio/Sound/658266__matrixxx__retro-inspect-sound-ui-or-in-game-notification.wav
+- Assets/Resources/StagesData/Sea/Science.png
+- Assets/Audio/Music/611050__theojt__electric-dream-ambient.wav
+- Assets/Resources/StagesData/KidWithBook/main.png
+- Assets/Audio/Music/744147__lugani64__kingdom-loop.mp3
+- Assets/Resources/StagesData/Sea/Nature_.png
+- Assets/Resources/StagesData/Sea/Nature.png
+- Assets/Resources/StagesData/Sea/Fairtales_.png
+- Assets/Resources/StagesData/Space/stars2.png
+- Assets/Resources/StagesData/Space/stars1.png
+- Assets/Audio/Sound/749862__imeddy__alien-machine-ai-communications.wav
+- Assets/Resources/StagesData/Sea/Manners.png
+- Assets/Resources/StagesData/KidWithBook/unscalable/kid.png
+- Assets/Audio/Sound/168042__speedenza__whoosh-laser-zap.wav
+- Assets/Resources/StagesData/Sea/Science_.png
+- Assets/Resources/StagesData/Library/book.png
+- Assets/Resources/StagesData/Library/flashlight.png
+- Assets/Resources/StagesData/Sea/Fairtales.png
+- Assets/Resources/StagesData/Sea/Art.png
+Dependencies: []

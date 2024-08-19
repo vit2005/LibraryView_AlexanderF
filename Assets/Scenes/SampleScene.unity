@@ -1014,6 +1014,7 @@ GameObject:
   - component: {fileID: 1984647932}
   - component: {fileID: 1984647934}
   - component: {fileID: 1984647933}
+  - component: {fileID: 1984647935}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1120,7 +1121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b138475d3468a4f4096efdec5f2df85f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 40e202fd2e74b3745b4182b4633abd54, type: 2}
+  config: {fileID: 0}
   background: {fileID: 2108218238}
   buttonPrefab: {fileID: 7248911118786236712, guid: f112c7229f2f31b4aa20148b7a0f1905, type: 3}
   backgroundAudio: {fileID: 1984647933}
@@ -1234,7 +1235,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255325d448d3815439a53d8900b844b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  light: {fileID: 27107530}
+  lightImage: {fileID: 27107530}
+--- !u!114 &1984647935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984647927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a3074335d72a884a8927992b2bc61cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 1984647932}
 --- !u!1 &2016288166
 GameObject:
   m_ObjectHideFlags: 0
