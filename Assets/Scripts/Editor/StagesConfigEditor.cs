@@ -8,6 +8,7 @@ public class StagesConfigEditor : Editor
 {
     // Сериализованное свойство для списка allStages
     SerializedProperty allStagesProperty;
+    private string datastring = "";
 
     // Метод, который вызывается при активации редактора (например, при выделении объекта в инспекторе)
     private void OnEnable()
@@ -37,6 +38,8 @@ public class StagesConfigEditor : Editor
 
             // Вызываем метод для отображения списка ActorData
             DrawActorDataList(StageConfigProperty.FindPropertyRelative("actors"));
+            EditorGUILayout.PropertyField(StageConfigProperty.FindPropertyRelative("main_url"));
+            EditorGUILayout.PropertyField(StageConfigProperty.FindPropertyRelative("music_url"));
 
             // Добавляем кнопку для удаления текущего StageConfig из списка
             if (GUILayout.Button("Remove this StageConfig"))
@@ -57,6 +60,19 @@ public class StagesConfigEditor : Editor
         {
             // Вызываем метод для добавления нового элемента в список allStages
             AddNewStageConfig();
+        }
+
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+
+        if (GUILayout.Button("Serialize"))
+        {
+            datastring = JsonUtility.ToJson(new StagesConfigSerializable((StagesConfig)target), true);
+        }
+        GUILayout.TextField(datastring);
+        if (GUILayout.Button("Deserialize"))
+        {
+            JsonUtility.FromJson<StagesConfigSerializable>(datastring).FillStagesConfig((StagesConfig)target);
         }
 
         // Применяем изменения в сериализованном объекте
@@ -88,6 +104,11 @@ public class StagesConfigEditor : Editor
             EditorGUILayout.PropertyField(ActorDataProperty.FindPropertyRelative("isDragable"));
             EditorGUILayout.PropertyField(ActorDataProperty.FindPropertyRelative("clickSound"));
             EditorGUILayout.PropertyField(ActorDataProperty.FindPropertyRelative("longPressSound"));
+            EditorGUILayout.Space();
+            EditorGUILayout.PropertyField(ActorDataProperty.FindPropertyRelative("image_url"));
+            EditorGUILayout.PropertyField(ActorDataProperty.FindPropertyRelative("clickSound_url"));
+            EditorGUILayout.PropertyField(ActorDataProperty.FindPropertyRelative("longPressSound_url"));
+
 
             // Начинаем горизонтальную группу для размещения кнопок на одной линии
             EditorGUILayout.BeginHorizontal();
