@@ -15,14 +15,14 @@ public class ActorEffectsController : MonoBehaviour
     [SerializeField] OpacityAnimation opacity;
     [SerializeField] PumpAnimation pump;
 
-    private Dictionary<ButtonEffects, Behaviour> effectsDictionary = new Dictionary<ButtonEffects, Behaviour>();
+    private Dictionary<ActorBehavior, Behaviour> effectsDictionary = new Dictionary<ActorBehavior, Behaviour>();
 
     public void Awake()
     {
-        effectsDictionary.Add(ButtonEffects.Outline, outline);
-        effectsDictionary.Add(ButtonEffects.Blink, blink);
-        effectsDictionary.Add(ButtonEffects.Opacity, opacity);
-        effectsDictionary.Add(ButtonEffects.Pump, pump);
+        effectsDictionary.Add(ActorBehavior.Outline, outline);
+        effectsDictionary.Add(ActorBehavior.Blink, blink);
+        effectsDictionary.Add(ActorBehavior.Opacity, opacity);
+        effectsDictionary.Add(ActorBehavior.Pump, pump);
     }
 
     public void SetImage(Sprite sprite)
@@ -35,12 +35,12 @@ public class ActorEffectsController : MonoBehaviour
         text.text = title;
     }
 
-    public void SetEffects(ButtonEffects effects)
+    public void SetEffects(ActorBehavior effects)
     {
-        foreach (var effect in Enum.GetValues(typeof(ButtonEffects))) 
+        foreach (var effect in Enum.GetValues(typeof(ActorBehavior))) 
         { 
-            if ((effects & (ButtonEffects)effect) != 0 && effectsDictionary.ContainsKey((ButtonEffects)effect))
-                effectsDictionary[(ButtonEffects)effect].enabled = true;
+            if ((effects & (ActorBehavior)effect) != 0 && effectsDictionary.ContainsKey((ActorBehavior)effect))
+                effectsDictionary[(ActorBehavior)effect].enabled = true;
         }
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [System.Flags]
-public enum ButtonEffects
+public enum ActorBehavior
 {
     None = 0,
     Outline = 1 << 0,  // 1
@@ -25,7 +25,7 @@ public class ActorDataSerializable
     public Vector2 size;
     public bool isScalable;
     public string title;
-    public ButtonEffects effects;
+    public ActorBehavior effects;
     public bool isDragable;
 
     // serialization
@@ -133,7 +133,7 @@ public class ActorData
     public Vector2 size;
     public bool isScalable;
     public string title;
-    public ButtonEffects effects;
+    public ActorBehavior effects;
     public bool isDragable;
     public AudioClip clickSound;
     public AudioClip longPressSound;

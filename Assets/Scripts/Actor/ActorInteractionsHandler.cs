@@ -68,7 +68,7 @@ public class ActorInteractionsHandler : MonoBehaviour, IBeginDragHandler, IDragH
             OnLongPressEndAction?.Invoke(_data);
             isPointerLongPressDown = false;
         }
-        else
+        else if (pointerDownTimer < holdTime)
         {
             if (_isClickable) OnClickAction?.Invoke(_data);
         }
