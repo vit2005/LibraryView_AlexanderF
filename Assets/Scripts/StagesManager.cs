@@ -12,6 +12,7 @@ public class StagesManager : MonoBehaviour
     [SerializeField] private GameObject buttonPrefab;
     [SerializeField] private AudioSource backgroundAudio;
     [SerializeField] private StageEffectsController stageEffectsController;
+    [SerializeField] private ToolbarElementType toolbarButtons;
 
     private float w, h;
     private StageConfig choosenImageData;
@@ -20,7 +21,7 @@ public class StagesManager : MonoBehaviour
     public void Init(StagesConfig config)
     {
         this.config = config;
-        //OnClick += LogClick;
+        InitToolbar();
         int randomImageIndex = UnityEngine.Random.Range(0, config.allStages.Count);
         choosenImageData = config.allStages[randomImageIndex];
 
@@ -30,6 +31,13 @@ public class StagesManager : MonoBehaviour
 
         InstantiateButtons();
 
+    }
+
+    private void InitToolbar()
+    {
+        var buttons = ToolbarController.Instance.Show(toolbarButtons);
+        ((SimpleToolbarButton)buttons[ToolbarElementType.PrevBtn]).SubscribeClick((string _) => SetPreviousImage());
+        ((SimpleToolbarButton)buttons[ToolbarElementType.NextBtn]).SubscribeClick((string _) => SetNextImage());
     }
 
     private void SetMainImageAndSound()
