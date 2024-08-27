@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Flags]
+//[System.Flags]
 public enum ToolbarElementType
 {
     PrevBtn = 1 << 0,

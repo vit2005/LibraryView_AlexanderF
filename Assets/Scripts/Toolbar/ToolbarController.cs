@@ -35,22 +35,31 @@ public class ToolbarController : MonoBehaviour
         }
     }
 
-    public Dictionary<ToolbarElementType, ToolbarElementBase> Show(ToolbarElementType buttons)
+    public Dictionary<ToolbarElementType, ToolbarElementBase> Show(List<ToolbarElementType> buttons)
     {
         Clear();
 
         Dictionary<ToolbarElementType, ToolbarElementBase> result = new Dictionary<ToolbarElementType, ToolbarElementBase>();
 
-        foreach (var type in Enum.GetValues(typeof(ToolbarElementType)))
+        foreach (var t in buttons)
         {
-            ToolbarElementType t = (ToolbarElementType)type;
+            if (!instances.ContainsKey(t)) continue;
+            instances[t].transform.SetAsLastSibling();
+            instances[t].gameObject.SetActive(true);
+            result.Add(t, instances[t]);
 
-            if ((buttons & t) != 0 && instances.ContainsKey(t))
-            {
-                instances[t].gameObject.SetActive(true);
-                result.Add(t, instances[t]);
-            }
         }
+
+        //foreach (var type in Enum.GetValues(typeof(ToolbarElementType)))
+        //{
+        //    ToolbarElementType t = (ToolbarElementType)type;
+
+        //    if ((buttons & t) != 0 && instances.ContainsKey(t))
+        //    {
+        //        instances[t].gameObject.SetActive(true);
+        //        result.Add(t, instances[t]);
+        //    }
+        //}
 
         return result;
     }

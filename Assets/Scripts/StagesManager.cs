@@ -12,7 +12,7 @@ public class StagesManager : MonoBehaviour
     [SerializeField] private GameObject buttonPrefab;
     [SerializeField] private AudioSource backgroundAudio;
     [SerializeField] private StageEffectsController stageEffectsController;
-    [SerializeField] private ToolbarElementType toolbarButtons;
+    [SerializeField] private List<ToolbarElementType> toolbarButtons;
 
     private float w, h;
     private StageConfig choosenImageData;
@@ -38,6 +38,7 @@ public class StagesManager : MonoBehaviour
         var buttons = ToolbarController.Instance.Show(toolbarButtons);
         ((SimpleToolbarButton)buttons[ToolbarElementType.PrevBtn]).SubscribeClick((string _) => SetPreviousImage());
         ((SimpleToolbarButton)buttons[ToolbarElementType.NextBtn]).SubscribeClick((string _) => SetNextImage());
+        ((ToolbarSoundPicker)buttons[ToolbarElementType.SoundPicker]).SubscribeSoundTypeChange((SoundType type) => { Debug.Log(type); })  ;
     }
 
     private void SetMainImageAndSound()
