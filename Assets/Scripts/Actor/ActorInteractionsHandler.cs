@@ -10,6 +10,7 @@ public class ActorInteractionsHandler : MonoBehaviour, IBeginDragHandler, IDragH
     private bool _isLongPress = false;
     private bool _isDraggable = false;
     private string _data;
+    public string data => _data;
 
     public Action<string> OnClickAction;
     public Action<string> OnLongPressBeginAction;

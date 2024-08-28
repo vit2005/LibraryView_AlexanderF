@@ -738,6 +738,7 @@ MonoBehaviour:
   - {fileID: 5793703311023701013, guid: 47791f2b139829c4fb398e4ab65c382f, type: 3}
   - {fileID: 7725985408336706900, guid: da2482a3fe7fe33469729716fb484a23, type: 3}
   - {fileID: 5793703311023701013, guid: 161f2817f9d7cf44986bdd8e1a7d803a, type: 3}
+  - {fileID: 7725985408336706900, guid: 809a97756e3414d4799dcaea62050865, type: 3}
   dontDestroyOnLoadParent: {fileID: 433516062}
 --- !u!114 &1737933729
 MonoBehaviour:
@@ -1084,7 +1085,7 @@ MonoBehaviour:
   buttonPrefab: {fileID: 7248911118786236712, guid: f112c7229f2f31b4aa20148b7a0f1905, type: 3}
   backgroundAudio: {fileID: 1984647933}
   stageEffectsController: {fileID: 1984647934}
-  toolbarButtons: 010000000800000002000000
+  toolbarButtons: 010000000800000004000000
 --- !u!82 &1984647933
 AudioSource:
   m_ObjectHideFlags: 0

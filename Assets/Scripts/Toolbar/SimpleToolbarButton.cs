@@ -10,7 +10,7 @@ public class SimpleToolbarButton : ToolbarElementBase
 
     public override ToolbarElementType ToolbarElementType => type;
 
-    private Action<string> _onClick;
+    protected Action<string> _onClick;
 
     public void Awake()
     {

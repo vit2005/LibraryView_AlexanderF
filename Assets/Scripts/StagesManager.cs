@@ -37,7 +37,8 @@ public class StagesManager : MonoBehaviour
     {
         var buttons = ToolbarController.Instance.Show(toolbarButtons);
         ((SimpleToolbarButton)buttons[ToolbarElementType.PrevBtn]).SubscribeClick((string _) => SetPreviousImage());
-        ((SimpleToolbarButton)buttons[ToolbarElementType.NextBtn]).SubscribeClick((string _) => SetNextImage());
+        //((SimpleToolbarButton)buttons[ToolbarElementType.NextBtn]).SubscribeClick((string _) => SetNextImage());
+        ((SimpleToolbarButton)buttons[ToolbarElementType.AutoNextBtn]).SubscribeClick((string _) => SetNextImage());
         ((ToolbarSoundPicker)buttons[ToolbarElementType.SoundPicker]).SubscribeSoundTypeChange((SoundType type) => { Debug.Log(type); })  ;
     }
 
